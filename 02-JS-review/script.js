@@ -163,7 +163,7 @@ const [firstGenre1, secondGenre2, ...restGenres] = genres;
 console.log(firstGenre1, secondGenre2, restGenres);
 
 const newGenres = [...genres, "dystopian"];
-console.log(newGenres);
+newGenres;
 
 const updatedBook = {
   ...book,
@@ -172,4 +172,7 @@ const updatedBook = {
   // overwrite existing property
   pages: 300,
 };
-console.log(updatedBook);
+updatedBook;
+
+const summary = `${title} is a book by ${author} (${publicationDate})`;
+summary;
