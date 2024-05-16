@@ -174,5 +174,7 @@ const updatedBook = {
 };
 updatedBook;
 
-const summary = `${title} is a book by ${author} (${publicationDate})`;
+const summary = `${title} is a book by ${author} (${
+  publicationDate.split("-")[0]
+})`;
 summary;
