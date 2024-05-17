@@ -66,7 +66,7 @@ const data = [
     publicationDate: "1965-01-01",
     author: "Frank Herbert",
     genres: ["science fiction", "novel", "adventure"],
-    hasMovieAdaptation: true,
+    hasMovieAdaptation: false,
     pages: 658,
     translations: {
       spanish: "",
@@ -245,3 +245,14 @@ const essentialData = books.map((b) => ({
 }));
 
 essentialData;
+
+const longBooks = books
+  .filter((b) => b.pages > 500)
+  .filter((b) => b.hasMovieAdaptation);
+longBooks;
+
+const adventureBooks = books
+  .filter((b) => b.genres.includes("adventure"))
+  .map((b) => b.title);
+
+adventureBooks;
