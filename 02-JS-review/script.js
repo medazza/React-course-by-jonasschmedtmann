@@ -298,10 +298,20 @@ const booksAfterUpdate = booksAfterRemove.map((b) => {
 });
 booksAfterUpdate;
 */
-fetch("https://jsonplaceholder.typicode.com/todos")
-  .then((response) => response.json())
-  .then((data) => {
-    console.log(data);
-  });
 
+// fetch("https://jsonplaceholder.typicode.com/todos")
+//   .then((response) => response.json())
+//   .then((data) => {
+//     console.log(data);
+//   });
+// console.log("azza");
+
+async function getTodos() {
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos");
+  const data = await response.json();
+  console.log(data);
+  return data;
+}
+const todos = getTodos();
+console.log(todos);
 console.log("azza");
