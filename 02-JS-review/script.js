@@ -254,5 +254,7 @@ longBooks;
 const adventureBooks = books
   .filter((b) => b.genres.includes("adventure"))
   .map((b) => b.title);
-
 adventureBooks;
+
+const pagesAllBooks = books.reduce((sum, b) => sum + b.pages, 0);
+pagesAllBooks;
