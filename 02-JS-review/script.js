@@ -176,5 +176,10 @@ updatedBook;
 
 const summary = `${title} is a book by ${author} (${
   publicationDate.split("-")[0]
-})`;
+}). the book has ${
+  hasMovieAdaptation ? "a movie adaptation" : "no movie adaptation"
+}`;
 summary;
+
+const pagesRange = pages > 1000 ? "over a thousand" : "under a thousand";
+pagesRange;
