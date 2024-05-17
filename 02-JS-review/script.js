@@ -173,10 +173,15 @@ const updatedBook = {
   pages: 300,
 };
 updatedBook;
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+const getYear = (str) => str.split("-")[0];
+console.log(getYear(publicationDate));
 
-const summary = `${title} is a book by ${author} (${
-  publicationDate.split("-")[0]
-}). the book has ${
+const summary = `${title} is a book by ${author} (${getYear(
+  publicationDate
+)}). the book has ${
   hasMovieAdaptation ? "a movie adaptation" : "no movie adaptation"
 }`;
 summary;
