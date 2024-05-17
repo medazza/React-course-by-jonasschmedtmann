@@ -188,3 +188,25 @@ summary;
 
 const pagesRange = pages > 1000 ? "over a thousand" : "under a thousand";
 pagesRange;
+
+console.log(true && "hello");
+console.log(false && "hello");
+console.log(hasMovieAdaptation && "this book has a movie adaptation");
+
+// falsy values: false, 0, "", null, undefined, NaN
+console.log("azza" && "hello");
+console.log(0 && "some string");
+
+console.log(true || "hello");
+console.log(false || "hello");
+
+console.log(book.translations.spanish);
+const spanishTranslation = book.translations.spanish || "Not translated";
+spanishTranslation;
+
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
