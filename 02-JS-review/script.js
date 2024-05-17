@@ -223,6 +223,7 @@ console.log(getTotalReviewsCount(book));
 
 */
 
+/*
 const books = getBooks();
 
 const doubled = [1, 2, 3, 4, 5].map((x) => x * 2);
@@ -296,3 +297,11 @@ const booksAfterUpdate = booksAfterRemove.map((b) => {
   return b; // no change
 });
 booksAfterUpdate;
+*/
+fetch("https://jsonplaceholder.typicode.com/todos")
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data);
+  });
+
+console.log("azza");
