@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const messages = [
   "Learn React ⚛️",
   "Apply for jobs 💼",
@@ -32,7 +33,7 @@ function Steps() {
   return (
     <div>
       <button className="close" onClick={() => setIsOpen((is) => !is)}>
-        &times;
+        ❌
       </button>
       {isOpen && (
         <div className="steps">
@@ -47,10 +48,10 @@ function Steps() {
             <div className="buttons">
               <Button
                 bgColor="#e7e7e7"
-                textColor="#333"
+                textColor="#555"
                 onClick={() => alert(`Learn how to ${messages[step - 1]}`)}
               >
-                Learn how
+                Learn more ...
               </Button>
             </div>
           </StepMessage>
@@ -67,6 +68,20 @@ function Steps() {
           </div>
         </div>
       )}
+
+      <StepMessage step={step}>
+        <h3>use step component in another place</h3>
+        <p>any content here</p>
+        <div className="buttons">
+          <Button
+            bgColor="#e1e1e1"
+            textColor="#222"
+            onClick={() => alert(`Learn how to ${messages[step - 1]}`)}
+          >
+            click
+          </Button>
+        </div>
+      </StepMessage>
     </div>
   );
 }
@@ -74,7 +89,7 @@ function Steps() {
 function StepMessage({ step, children }) {
   return (
     <div className="message">
-      <h3>Step {step}:</h3>
+      <h3>Step {step}</h3>
       {children}
     </div>
   );

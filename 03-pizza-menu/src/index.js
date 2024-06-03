@@ -127,10 +127,10 @@ function Pizza({ pizzaObj }) {
 }
 
 function Footer() {
-  const openHour = 12;
-  const closeHour = 22;
+  const opHour = 12;
+  const clHour = 22;
   const hour = new Date().getHours();
-  const isOpen = hour >= openHour && hour <= closeHour;
+  const isOpen = hour >= opHour && hour <= clHour;
   console.log(isOpen);
 
   // if (isOpen) alert("We're still open!");
@@ -139,10 +139,10 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHour} openHour={openHour} />
+        <Order closeHour={clHour} openHour={opHour} />
       ) : (
         <p>
-          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+          We're happy to welcome you between {opHour}:00 and {clHour}:00.
         </p>
       )}
     </footer>

@@ -2,7 +2,7 @@ export default function Stats({ items }) {
   if (!items.length)
     return (
       <p className="stats">
-        <em>Start to adding some items to your packing list 🚀</em>
+        <em>Start to adding some items to your packing list ✈️</em>
       </p>
     );
 
