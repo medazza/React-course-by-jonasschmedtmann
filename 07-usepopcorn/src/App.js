@@ -96,12 +96,14 @@ export default function App() {
 
   useEffect(
     function () {
+      const controller = new AbortController();
       async function fetchMovies() {
         try {
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`,
+            { signal: controller.signal }
           );
 
           if (!res.ok) {
@@ -114,9 +116,12 @@ export default function App() {
           }
 
           setMovies(data.Search);
+          setError("");
         } catch (err) {
-          console.log(err.message);
-          setError(err.message);
+          if (err.name !== "AbortError") {
+            console.log(err.message);
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
@@ -127,7 +132,10 @@ export default function App() {
         setError("");
         return;
       }
+      handleCloseMovie();
       fetchMovies();
+
+      return () => controller.abort();
     },
     [query]
   );
@@ -327,6 +335,25 @@ function MovieDetails({ watched, selectedId, onCloseMovie, onAddWatced }) {
 
   useEffect(
     function () {
+      document.addEventListener("keydown", function (event) {
+        if (event.code === "Escape") {
+          onCloseMovie();
+        }
+      });
+
+      return function () {
+        document.removeEventListener("keydown", function (event) {
+          if (event.code === "Escape") {
+            onCloseMovie();
+          }
+        });
+      };
+    },
+    [onCloseMovie]
+  );
+
+  useEffect(
+    function () {
       async function getMovieDetails() {
         setIsLoading(true);
         const res = await fetch(
@@ -346,6 +373,10 @@ function MovieDetails({ watched, selectedId, onCloseMovie, onAddWatced }) {
     function () {
       if (!title) return;
       document.title = `Movie | ${title}`;
+
+      return function () {
+        document.title = "usePopcorn";
+      };
     },
     [title]
   );
